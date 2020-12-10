@@ -19,6 +19,6 @@ class Settings():
         self.food_color = 255, 0, 255
         
         # essence item parameters
-        self.essence_width = 3
-        self.essence_height = 3
-        self.essence_color = 255, 140, 0
+        self.entity_width = 3
+        self.entity_height = 3
+        self.entity_color = 255, 140, 0
