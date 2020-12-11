@@ -29,18 +29,22 @@ def create_food(ns_settings, screen, food_group, all_sprites):
 
 
 def update_screen(ns_settings, screen, entity_group,
-                  food_group, all_sprites):
+                  food_group, all_sprites, hits):
     """ update the image on the screen and displays a new screen """
-    # the screen is redrawn in every cycle
-    screen.fill(ns_settings.bg_color)
-    all_sprites.update()
 
     for food in food_group.sprites():
         food.draw_food()
 
     for entity_sprite in entity_group.sprites():
         entity_sprite.update()
+        entity_sprite.update_time()
+        if entity_sprite.entity_timer >= 0:
+            if entity_sprite in hits:
+                entity_sprite.entity_timer += 10
+                print(" + 10 healthy ")
+                create_entity(ns_settings, screen, entity_group, all_sprites)
+        else:
+            entity_sprite.kill()
+            print("was killed")
+        print(entity_sprite.entity_timer)
         entity_sprite.draw_entity()
-
-    # displaying the last drawn screen
-        pygame.display.flip()

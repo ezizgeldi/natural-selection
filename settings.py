@@ -22,3 +22,6 @@ class Settings():
         self.entity_width = 3
         self.entity_height = 3
         self.entity_color = 255, 140, 0
+
+        self.entity_dt = 0
+
