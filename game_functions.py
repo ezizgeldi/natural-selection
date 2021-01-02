@@ -54,13 +54,24 @@ def create_food(ns_settings, screen, food_group, all_sprites):
         food_group.add(foodd)
 
 def screen_graph():
+    fig = plt.figure()
     df = pd.read_csv("statistics.csv")
 
     x = df['year']
     y1 = df['food']
     y2 = df['entity']
 
+    plt.figure(figsize=(8,5), dpi=100)
     plt.plot(x, y1, x, y2)
+    plt.plot(x, y1,  label = 'food')
+    plt.plot(x, y2, 'r',  label = 'entity')
+
+    
+    plt.title('Natural Selection', fontdict={'fontname': 'Comic Sans MS', 'fontsize': 20})
+    plt.xlabel('Year')
+    plt.ylabel('Population')
+    plt.legend()
+
     plt.savefig('graph.png', dpi=300)
 
 
