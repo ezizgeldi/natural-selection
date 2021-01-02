@@ -24,4 +24,5 @@ class Settings():
         self.entity_color = 255, 140, 0
 
         self.entity_dt = 0
+        self.counter = 0 
 

@@ -21,17 +21,18 @@ def run_simulation():
     # creating  essence
     gf.create_entity(ns_settings, screen, all_sprites, entity_group)
     gf.create_food(ns_settings, screen, food_group, all_sprites)
-
+    gf.create_data()
     """starting the main loop simulation"""
     while True:
-        hits = pygame.sprite.groupcollide(
-            entity_group, food_group, False, True)
-        gf.check_events(ns_settings, screen, food_group, all_sprites)
+        hits = pygame.sprite.groupcollide(entity_group, food_group, False,
+                                          True)
+        gf.check_events(ns_settings, screen, entity_group, food_group,
+                        all_sprites)
         # the screen is redrawn in every cycle
         screen.fill(ns_settings.bg_color)
         all_sprites.update()
-        gf.update_screen(ns_settings, screen, entity_group,
-                         food_group, all_sprites, hits)
+        gf.update_screen(ns_settings, screen, entity_group, food_group,
+                         all_sprites, hits)
 
         # displaying the last drawn screen
         pygame.display.flip()
